@@ -13,6 +13,7 @@ Docker-compose obsahuje:
 
 Možné potíže:
 * v Linuxu může vyžadovat nastavení `sysctl -w vm.max_map_count=262144`
+  * Řešení pro WSL2 (Docker Desktop for Windows): https://github.com/docker/for-win/issues/5202
 * dostatek místa na disku - maximální zaplnění disku na 85%, jinak se postupně automaticky degraduje funkčnost clusteru až do režimu read-only (na 95% zaplnění)
 * dostatek RAM (aspoň 1GB na každý node)
 * pokud narazíte na potíže, zkuste vypnout (CTRL-C) a zase nastartovat docker-compose
