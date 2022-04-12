@@ -44,6 +44,7 @@ https://www.ludekvesely.cz/serial-elasticsearch-4-fulltextove-vyhledavani-v-cest
 https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledavani/
 
 * doinstalovat ICU folding  https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html
+  * `docker-compose exec es01 bin/elasticsearch-plugin remove analysis-icu`
 * doinstalovat Hunspell CS slovnik https://stackoverflow.com/questions/37168208/hunspell-for-elasticsearch
 * princip analyzérů a vyhledávání pomocí nich
 * dotaz pro fulltextové vyhledáváná produktů
