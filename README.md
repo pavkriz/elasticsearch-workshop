@@ -2,21 +2,39 @@
 
 ## Spuštění v Dockeru
 
-Spuštění cluteru:
-
-`docker-compose up`
-
-Docker-compose obsahuje:
-* 3 uzly clusteru
-* Kibana
-* Cerebro
-
 Možné potíže:
-* v Linuxu může vyžadovat nastavení `sysctl -w vm.max_map_count=262144`
-  * Řešení pro WSL2 (Docker Desktop for Windows): https://github.com/docker/for-win/issues/5202
+* max_map_count
+  * v Linuxu může vyžadovat nastavení `sysctl -w vm.max_map_count=262144`
+  * [Řešení pro WSL2](https://github.com/docker/for-win/issues/5202) (Docker Desktop for Windows) `wsl -d docker-desktop sysctl -w vm.max_map_count=262144` 
 * dostatek místa na disku - maximální zaplnění disku na 85%, jinak se postupně automaticky degraduje funkčnost clusteru až do režimu read-only (na 95% zaplnění)
 * dostatek RAM (aspoň 1GB na každý node)
 * pokud narazíte na potíže, zkuste vypnout (CTRL-C) a zase nastartovat docker-compose
+
+
+### Spuštění clusteru (pro > 8GB RAM):
+
+```
+cd elastic-cluster
+docker-compose up
+```
+
+Docker-compose obsahuje:
+* 3 uzly clusteru Elasticsearch
+* Kibana
+* Cerebro
+
+### Spuštění jednoho nodu (pro <= 8GB RAM):
+
+```
+cd elastic-single
+docker-compose up
+```
+
+Docker-compose obsahuje:
+* 1 uzel Elasticsearch
+* Kibana
+* Cerebro
+
 
 ## Vytvoření indexu a naplnění dat pomocí HTTP REST API
 
@@ -43,7 +61,7 @@ https://www.ludekvesely.cz/serial-elasticsearch-4-fulltextove-vyhledavani-v-cest
 
 https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledavani/
 
-* doinstalovat ICU folding  https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html
+* [doinstalovat ICU folding](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html)
   * `docker-compose exec es01 bin/elasticsearch-plugin remove analysis-icu`
 * doinstalovat Hunspell CS slovnik https://stackoverflow.com/questions/37168208/hunspell-for-elasticsearch
 * princip analyzérů a vyhledávání pomocí nich
