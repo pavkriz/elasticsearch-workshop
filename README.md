@@ -39,6 +39,8 @@ https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledav
 
 ## Vyhledávání
 
+https://www.ludekvesely.cz/serial-elasticsearch-4-fulltextove-vyhledavani-v-cestine/
+
 https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledavani/
 
 * princip analyzérů a vyhledávání pomocí nich
