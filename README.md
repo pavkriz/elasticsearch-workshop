@@ -65,6 +65,8 @@ https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledav
   * `docker-compose exec es01 bin/elasticsearch-plugin remove analysis-icu`
 * doinstalovat Hunspell CS slovnik https://stackoverflow.com/questions/37168208/hunspell-for-elasticsearch
 * princip analyzérů a vyhledávání pomocí nich
+* [vytvořit index s nastavenými fulltext analyzéry](PUT_products.txt)
+* naplnit data z [NDJSON](data.ndjson)
 * dotaz pro fulltextové vyhledáváná produktů
 * dotaz pro vyhledávání podle ceny
 * analytické dotazy využívající agregace

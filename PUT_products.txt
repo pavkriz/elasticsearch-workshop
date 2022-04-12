@@ -1,0 +1,84 @@
+PUT products  
+{
+  "settings": {
+    "number_of_shards": "1",
+    "number_of_replicas": "0",
+    "analysis": {
+      "analyzer": {
+        "czech_hunspell_stopwords": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "min_length",
+            "czech_stop",
+            "czech_hunspell",
+            "lowercase",
+            "czech_stop",
+            "icu_folding",
+            "unique_on_same_position"
+          ]
+        },
+        "czech_hunspell": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "czech_hunspell",
+            "lowercase",
+            "icu_folding",
+            "unique_on_same_position"
+          ]
+        },
+        "czech_lowercase": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "icu_folding"
+          ]
+        }
+      },
+      "filter": {
+        "czech_hunspell": {
+          "type": "hunspell",
+          "locale": "cs_CZ"
+        },
+        "czech_stop": {
+          "type": "stop",
+          "stopwords": [
+            "že",
+            "_czech_"
+          ]
+        },
+        "unique_on_same_position": {
+          "type": "unique",
+          "only_on_same_position": true
+        },
+        "min_length": {
+          "type": "length",
+          "min": 2
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+    "title": {
+        "type": "keyword",
+        "fields": {
+        "czech_hunspell": {
+            "type": "text",
+            "analyzer": "czech_hunspell"
+        },
+        "czech_lowercase": {
+            "type": "text",
+            "analyzer": "czech_lowercase"
+        }
+        }
+    },
+    "description": {
+        "type": "text",
+        "analyzer": "czech_hunspell_stopwords"
+    }
+    }
+  }
+}
