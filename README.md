@@ -62,8 +62,30 @@ https://www.ludekvesely.cz/serial-elasticsearch-4-fulltextove-vyhledavani-v-cest
 https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledavani/
 
 * [doinstalovat ICU folding](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html)
-  * `docker-compose exec es01 bin/elasticsearch-plugin remove analysis-icu`
-* doinstalovat Hunspell CS slovnik https://stackoverflow.com/questions/37168208/hunspell-for-elasticsearch
+```
+docker-compose exec es01 bin/elasticsearch-plugin install analysis-icu
+docker-compose exec es02 bin/elasticsearch-plugin install analysis-icu
+docker-compose exec es03 bin/elasticsearch-plugin install analysis-icu
+```
+* [doinstalovat Hunspell CS slovnik](https://stackoverflow.com/questions/37168208/hunspell-for-elasticsearch)
+
+```
+docker-compose exec es01 mkdir -p config/hunspell/cs_CZ
+docker-compose exec es01 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.aff -o config/hunspell/cs_CZ/cs_CZ.aff
+docker-compose exec es01 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.dic -o config/hunspell/cs_CZ/cs_CZ.dic
+docker-compose exec es01 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/settings.yml -o config/hunspell/cs_CZ/settings.yml
+
+docker-compose exec es02 mkdir -p config/hunspell/cs_CZ
+docker-compose exec es02 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.aff -o config/hunspell/cs_CZ/cs_CZ.aff
+docker-compose exec es02 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.dic -o config/hunspell/cs_CZ/cs_CZ.dic
+docker-compose exec es02 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/settings.yml -o config/hunspell/cs_CZ/settings.yml
+
+docker-compose exec es03 mkdir -p config/hunspell/cs_CZ
+docker-compose exec es03 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.aff -o config/hunspell/cs_CZ/cs_CZ.aff
+docker-compose exec es03 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/cs_CZ.dic -o config/hunspell/cs_CZ/cs_CZ.dic
+docker-compose exec es03 curl https://raw.githubusercontent.com/ludekvesely/elasticsearch-cz/master/hunspell/cs_CZ/settings.yml -o config/hunspell/cs_CZ/settings.yml
+```
+* nezapomenout restartovat server(y)
 * princip analyzérů a vyhledávání pomocí nich
 * [vytvořit index s nastavenými fulltext analyzéry](PUT_products.txt)
 * naplnit data z [NDJSON](data.ndjson)
