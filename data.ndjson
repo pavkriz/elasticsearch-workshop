@@ -1,3 +1,6 @@
-{"title": "Jablka golden 1 ks", "description": "Veškeré ovoce je prémiové kvality", "price": 45}
-{"title": "Jablko idared", "description": "Kvalitní a čerstvé ovoce", "price": 42}
-{"title": "Müsli", "description": "Křupavé müsli s jablky", "price": 60}
+{"index": {"_index": "products", "_type": "products", "_id": "1"}}
+{"title": "Jablka golden 1 ks", "description": "Veškeré ovoce je prémiové kvality"}
+{"index": {"_index": "products", "_type": "products", "_id": "2"}}
+{"title": "Jablko idared", "description": "Kvalitní a čerstvé ovoce"}
+{"index": {"_index": "products", "_type": "products", "_id": "3"}}
+{"title": "Müsli", "description": "Křupavé müsli s jablky"}
