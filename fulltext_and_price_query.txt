@@ -1,0 +1,31 @@
+GET products/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "multi_match": {
+            "query": "jablko",
+            "fields": [
+              "title.czech_lowercase^2",
+              "title.czech_hunspell",
+              "description^0.3"
+            ]
+          }
+        }
+      ],
+      "filter": [
+        {
+          "range": {
+            "price": {
+              "gte": "0",
+              "lte": "50"
+            }
+          }
+        }
+      ],
+      "should": [],
+      "must_not": []
+    }
+  }
+}
