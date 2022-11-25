@@ -38,7 +38,7 @@ Docker-compose obsahuje:
 
 ## Vytvoření indexu a naplnění dat pomocí HTTP REST API
 
-https://www.ludekvesely.cz/serial-elasticsearch-5-pokrocile-fulltextove-vyhledavani/
+https://www.ludekvesely.cz/serial-elasticsearch-3-prvni-kroky-ukladani-a-zobrazeni-dat/
 
 * nastavit např. 1 shard a 1 repliku (tedy celkem bude index uložen na nodech 2x)
 * naplnění indexu daty pomocí HTTP PUT
